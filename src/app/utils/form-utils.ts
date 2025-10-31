@@ -54,6 +54,8 @@ export class FormUtils {
             return this.getPatterns(errors[key].requiredPattern);
         case 'emailTaken':
             return `email ya registrado!`
+        case 'notStrider':
+            return `El username ya se encuentra registrado!`
         default:
           return `error de validacion no controlada: ${key}`
       }
@@ -145,4 +147,24 @@ export class FormUtils {
   }
 
 
+  static notStrider(control:AbstractControl):ValidationErrors|null {
+
+    const formValue = control.value;
+
+    if(formValue === "strider"){
+      return {
+        notStrider:true
+      }
+    }
+
+    return null;
+
+
+  }
+
 }
+
+
+
+
+
